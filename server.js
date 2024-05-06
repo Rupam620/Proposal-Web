@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const config = require('./config');
+const path = require('path')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('./models/User')
@@ -10,6 +11,10 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.get("/",(req,res)=>{
+  app.use(express.static(path.resolve(__dirname,"Front-End","build")))
+  res.sendFile(path.resolve(__dirname,"Front-End","build","index.html"))
+})
 
 mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
