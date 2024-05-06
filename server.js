@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const config = require('./config');
 const path = require('path')
-const bcrypt = require('bcrypt');
+
 const jwt = require('jsonwebtoken');
 const User = require('./models/User')
 
